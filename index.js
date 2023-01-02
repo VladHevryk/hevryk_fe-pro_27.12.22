@@ -1,5 +1,12 @@
 const userName = prompt('Enter your name:')
 
-alert(`Hello, ${userName}! How are you?`)
+// alert(`Hello, ${userName}! How are you?`)
 
-console.log(userName);
+// console.log(userName);
+
+if(userName) {
+    alert(`Hello, ${userName}! How are you?`)
+} else {
+    console.error('Enter your name pls!');
+}
+
