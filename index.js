@@ -1,1 +1,1 @@
-console.log('It is my first hw!')
+console.log('It work!')
