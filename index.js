@@ -40,7 +40,11 @@ switch(operation) {
         result = numbFirst / numbSecond;
         console.log(`${numbFirst} / ${numbSecond} = ${result}`);
         break;
+    default:
+        console.log('Invalid operation');
+        break;
 };
 
 alert(`Your result is - ${result}`);
+
 
