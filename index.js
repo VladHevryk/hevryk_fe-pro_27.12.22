@@ -1,50 +1,38 @@
-let operation = prompt('Which operation do you need ?');
-let result;
+let userBirth = +prompt('Wich year were you birth ?');
+let userAge = 2023 - userBirth;
 
-let numbFirst = +prompt('Type your first number please !');
-
-if (isNaN(numbFirst) || numbFirst == '') {
-    do {
-    alert('Type a number please !');
-    numbFirst = +prompt('Type your first number please !');
-    } while (isNaN(numbFirst) || numbFirst == '');
+if (userBirth) {
+    alert(`Your age is - ${userAge} !`);
+} else {
+    alert('It is sad that you dont want to put your age ((')
 };
 
-let numbSecond = +prompt('Type your second number please !'); 
+let userCity = prompt('Where do you live ?');
 
-if (isNaN(numbSecond) || numbSecond == '') {
-    do {
-    alert('Type a number please !');
-    numbSecond = +prompt('Type your second number please !'); 
-    } while (isNaN(numbSecond ) || numbSecond == '');
+if (userCity === 'London' || userCity === 'london' || userCity === 'Kiev' || userCity === 'kiev' || userCity === 'Paris' || userCity === 'paris') {
+    alert(`Wow, ${userCity} is the Capital you are lucky !`);
+} else if (userCity) {
+    alert(`You live in a beautiful city - ${userCity} !`);
+} else {
+    alert('It is sad that you dont want to put your city ((');
+}
+
+let userSport = prompt('Which kind of sport do you prefer ?');
+let sportStars;
+
+if (userSport === 'race' || userSport === 'Race') {
+    sportStars = 'Lucas Di Grassi';
+} else if (userSport === 'football' || userSport === 'Football') {
+    sportStars = 'Vittorio Pozzo';
+} else if (userSport === 'basketball' || userSport === 'Basketball') {
+    sportStars = 'Carlos Cabezas';
 };
 
-switch(operation) {
-    case 'plus':
-    case '+':
-        result = numbFirst + numbSecond;
-        console.log(`${numbFirst} + ${numbSecond} = ${result}`);
-        break;
-    case 'minus':
-    case '-':
-        result = numbFirst - numbSecond;
-        console.log(`${numbFirst} - ${numbSecond} = ${result}`);
-        break;
-    case 'multiply':
-    case '*':
-        result = numbFirst * numbSecond;
-        console.log(`${numbFirst} * ${numbSecond} = ${result}`);
-        break;
-    case 'divide':
-    case '/':
-        result = numbFirst / numbSecond;
-        console.log(`${numbFirst} / ${numbSecond} = ${result}`);
-        break;
-    default:
-        console.log('Invalid operation');
-        break;
+if (sportStars) {
+    alert(`Cool you want be like ${sportStars} ?`);
+} else if (userSport) {
+    alert('Cool sport - is life !');
+} else {
+    alert('It is sad that you dont want to put your favourite sport ((');
 };
-
-alert(`Your result is - ${result}`);
-
 
