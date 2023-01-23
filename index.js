@@ -60,24 +60,20 @@ console.log(minNumb.length);
 
 // 5 part of HW 8
 
-let arrPartFive = [16, -37, 54, -4, 72, -56, 47, 4, -16, 25, -37, 46, 4, -51, 27, -63, 4, -54, 76, -4, 12, -35, 4, 47]; 
-
-let arrPair = arrPartFive.filter((el, i, arrNew) => { 
-  if (el > 0) { 
-    return arrNew.indexOf(el) !== i;  
-  }
-});
-
-let arrUnPaired = [];
-
-let arrayAll = arrPartFive.concat(arrPair); 
-
-arrUnPaired = arrayAll.filter((el) => {  
-  if (el > 0) { 
-    return arrPartFive.indexOf(el) < 0 || arrPair.indexOf(el) < 0;  
-  } 
-});
-
+let arrPartFive = [16, -37, 54, -4, 72, -56, 47, 4, -16, 25, -37, 46, 4, -51, 27, -63, 4, -54, 76, -4, 12, -35, 4, 47];  
+ 
+let arrPair = arrPartFive.filter((el, i, arrNew) => {  
+  if (el > 0) {  
+    return arrNew.indexOf(el) !== i;   
+  }  
+});  
+ 
+let arrUnPaired = arrPartFive.filter((el) => {  
+  if (el > 0) {  
+     return arrPair.indexOf(el) < 0;  
+  }  
+}); 
+ 
 console.log(arrUnPaired.length);
 
 // 6 part of HW 8
@@ -127,26 +123,24 @@ console.log(arrSum);
 
 // 8 part of HW 8
 
-let arrPartEight = [16, -37, 54, -4, 72, -56, 47, 4, -16, 25, -37, 46, 4, -51, 27, -63, 4, -54, 76, -4, 12, -35, 4, 47]; 
 
-let arrPairNum = arrPartEight.filter((el, i, arrNew) => { 
-  if (el > 0) { 
-    return arrNew.indexOf(el) !== i;  
-  }
-});
-
-let arrUnPair = [];
-
-let arrAll = arrPartEight.concat(arrPairNum); 
-
-arrUnPair = arrAll.filter((el) => {  
-  if (el > 0) { 
-    return arrPartEight.indexOf(el) < 0 || arrPairNum.indexOf(el) < 0;  
+let arrPartEight = [16, -37, 54, -4, 72, -56, 47, 4, -16, 25, -37, 46, 4, -51, 27, -63, 4, -54, 76, -4, 12, -35, 4, 47];  
+ 
+let arrPairNum = arrPartEight.filter((el, i, arrNew) => {  
+  if (el > 0) {  
+    return arrNew.indexOf(el) !== i;   
   } 
-});
-
-let arrSumma = arrUnPair.reduce((accum, el) => accum + el, 0); 
-
+}); 
+ 
+ 
+let arrUnPair = arrPartEight.filter((el) => { 
+  if (el > 0) {  
+    return arrPairNum.indexOf(el) < 0;   
+  }  
+}); 
+ 
+let arrSumma = arrUnPair.reduce((accum, el) => accum + el, 0);  
+ 
 console.log(arrSumma);
 
 // 9 part of HW 8
