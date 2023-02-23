@@ -42,6 +42,12 @@ class Visited extends Student {
     }
   }
   
+  presentOrAbsent(student, count, method){
+    for(let i = 0; i < count; i++){
+      student[method]();
+    }
+  }
+  
   averagePresent(){
    let getVisited = this.visitArray.filter((el) => el === true).length / (this.visitArray.length);
     return getVisited;
@@ -66,108 +72,32 @@ const student1 = new Visited ('Andy', 'Smit', 1995, [99, 87, 87, 87, 87, 87, 87,
 const student2 = new Visited ('Mary', 'Kerry', 1957, [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100,], new Array(25));
 const student3 = new Visited ('Kent', 'Volter', 1973, [99, 87, 87, 87, 87, 87, 87, 87, 87, 87, 99, 5, 100, 90, 87, 99, 100, 100, 90, 87, 99, 100, 100, 90, 87], new Array(25));
 
-
-student1.present();
-student1.present();
-student1.present();
-student1.present();
-student1.present();
-student1.present();
-student1.absent();
-student1.absent();
-student1.absent();
-student1.absent();
-student1.present();
-student1.absent();
-student1.absent();
-student1.absent();
-student1.absent();
-student1.present();
-student1.present();
-student1.present();
-student1.present();
-student1.present();
-student1.present();
-student1.present();
-student1.present();
-student1.present();
-student1.absent();
-student1.absent();
-student1.absent();
-
 console.log(student1);
+
+student1.presentOrAbsent(student1, 15, 'present')
+student1.presentOrAbsent(student1, 12, 'absent')
+
 
 console.log(student1.getAge());
 console.log(student1.averageScore());
 console.log(student1.averagePresent());
 student1.summary();
 
-student2.present();
-student2.present();
-student2.present();
-student2.present();
-student2.present();
-student2.present();
-student2.present();
-student2.present();
-student2.present();
-student2.present();
-student2.present();
-student2.present();
-student2.present();
-student2.present();
-student2.present();
-student2.present();
-student2.present();
-student2.present();
-student2.present();
-student2.present();
-student2.present();
-student2.present();
-student2.present();
-student2.present();
-student2.present();
-student2.present();
-student2.present();
-student2.present();
 
 console.log(student2);
+
+student2.presentOrAbsent(student2, 27, 'present')
 
 console.log(student2.getAge());
 console.log(student2.averageScore());
 console.log(student2.averagePresent());
 student2.summary();
 
-student3.present();
-student3.present();
-student3.present();
-student3.present();
-student3.present();
-student3.present();
-student3.present();
-student3.present();
-student3.present();
-student3.present();
-student3.present();
-student3.present();
-student3.present();
-student3.present();
-student3.present();
-student3.present();
-student3.present();
-student3.present();
-student3.present();
-student3.present();
-student3.present();
-student3.present();
-student3.present();
-student3.present();
-student3.present();
-student3.present();
-student3.present();
-student3.present();
+
 
 console.log(student3);
+
+student3.presentOrAbsent(student3, 26, 'present')
 
 console.log(student3.getAge());
 console.log(student3.averageScore());
