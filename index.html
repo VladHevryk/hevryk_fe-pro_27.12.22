@@ -36,7 +36,8 @@
   </div>
   
   <div class="catalog">
-    <div class="product__wrapp"></div>
+    <div class="product__wrapp">
+    </div>
   </div>
 
   <div class="popup">
@@ -45,7 +46,70 @@
         <div href="#" class="popup__close">
           <img src="icon/close_FILL1_wght400_GRAD0_opsz24.svg" alt="">
         </div>
-        <h2 class="popup__text">Thanks for buy!</h2>
+        <form class="form" id="get_form">
+          <label class="form__label">
+            <span class="form__span">First Name</span>
+            <input class="form__input" type="text" name="firstname">
+            <p class="form__error"></p>
+            <p class="form__error-length"></p>
+          </label>
+          <label class="form__label">
+            <span class="form__span">Last Name</span>
+            <input class="form__input" type="text" name="lastname">
+            <p class="form__error"></p>
+            <p class="form__error-length"></p>
+          </label>
+          <label class="form__label">
+            <span class="form__span">Phone number</span>
+            <input class="form__input" type="text" name="phone">
+            <p class="form__error"></p>
+            <p class="form__error-number"></p>
+          </label>
+          <label class="form__label">
+            <span class="form__span">Email</span>
+            <input class="form__input" type="email" name="email">
+            <p class="form__error"></p>
+            <p class="form__error-email"></p>
+          </label>
+          <label class="form__label">
+            <span class="form__span">City</span>
+            <select name="city" class="form__select">
+              <option value="Kyiv">Kyiv</option>
+              <option value="Lviv">Lviv</option>
+              <option value="Odessa">Odessa</option>
+              <option value="Kharkiv">Kharkiv</option>
+            </select>
+          </label>
+          <label class="form__label">
+            <span class="form__span">Nova Poshta</span>
+            <select name="poshta" class="form__select">
+              <option value="№103 department">№103 department</option>
+              <option value="№10 department">№10 department</option>
+              <option value="№3 department">№3 department</option>
+              <option value="№46 department">№46 department</option>
+            </select>
+          </label>
+          <label class="form__label">
+            <span class="form__span">Payment</span>
+            <select name="payment" class="form__select">
+              <option value="card">card</option>
+              <option value="cash">cash</option>
+            </select>
+          </label>
+          <label class="form__label">
+            <span class="form__span">Quantity of product</span>
+            <select name="quantity" class="form__select">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="more">more</option>
+            </select>
+          </label>
+          <textarea name="textarea" class="form__text" cols="10" rows="3"></textarea>
+          <button class="form__btn" type="submit">submit</button>
+        </form>
       </div>
     </div>
   </div>

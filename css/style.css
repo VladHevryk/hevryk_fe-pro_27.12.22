@@ -75,11 +75,13 @@ body {
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transition: all 0.4s ease-in-out;
+    height: 0;
+    transition: all 0.2s ease-in-out;
 }
 
 .product__info-active {
     opacity: 1;
+    height: 100%;
 }
 
 .product__price {
@@ -140,8 +142,8 @@ body {
 
 .popup__content {
     background-color: #fff;
-    min-width: 200px;
-    padding: 70px 40px;
+    min-width: 500px;
+    padding: 20px 20px;
     position: relative;
     opacity: 0;
 }
@@ -157,9 +159,89 @@ body {
     cursor: pointer;
 }
 
-.popup__text {
+.form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form__label {
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: blueviolet;
+}
+
+.form__span {
+    display: block;
+}
+
+.form__input {
+    width: 100%;
+    background-color: transparent;
+    border: 2px solid blueviolet;
+    border-radius: 5px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.form__select {
+    width: 100%;
+    background-color: transparent;
+    border: 2px solid blueviolet;
+    border-radius: 5px;
+}
+
+.form__text {
+    border: 2px solid blueviolet;
+    border-radius: 5px;
+    outline: none;
+}
+
+.form__btn {
+    font: 16px 'Bebas Neue';
+    color: aliceblue;
+    background-color: blueviolet;
+    border: 2px solid blueviolet;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+}
+
+.form__btn:hover {
+    background-color: transparent;
+    color: blueviolet;
+}
+
+.form__error {
+    font-size: 10px;
+    margin: 0;
+    color: red;
+}
+
+.form__error-email {
+    font-size: 10px;
+    margin: 0;
+    color: red;
+}
+
+.form__error-length {
+    font-size: 10px;
+    margin: 0;
+    color: red;
+}
+
+.form__error-number {
+    font-size: 10px;
+    margin: 0;
+    color: red;
+}
+
+.hide {
+    display: none;
+}
+
+/* .popup__text {
     margin: 0;
     font-size: 30px;
     color: blueviolet;
     text-align: center;
-}
+} */

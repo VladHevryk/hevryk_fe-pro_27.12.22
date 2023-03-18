@@ -127,7 +127,7 @@ const product = {
             descr: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis totam in sed perferendis, enim possimus'
         }
     ],
-    bags: [
+    bag: [
         {
             href: '/img/bag1.jpg',
             name: 'bag first',
@@ -159,7 +159,7 @@ const product = {
             descr: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis totam in sed perferendis, enim possimus'
         }
     ],
-    hats: [
+    hat: [
         {
             href: '/img/hat1.jpg',
             name: 'hat first',
@@ -200,18 +200,9 @@ const popup = document.querySelector('.popup');
 const popupContent = document.querySelector('.popup__content');
 const popupCloseIcon = document.querySelector('.popup__close');
 
-const actionTypes = {
-    shoes: () => productCatalog('shoes'),
-    hoody: () => productCatalog('hoody'),
-    tshirt: () => productCatalog('tshirt'),
-    jeans: () => productCatalog('jeans'),
-    bag: () => productCatalog('bags'),
-    hat: () => productCatalog('hats')
-};
-
 mainList.addEventListener('click', (e) => {
     const targetAction = e.target.dataset.action;
-    actionTypes[targetAction]();
+    productCatalog(targetAction);
 });
 
 function productCatalog(produktKey) {
@@ -244,86 +235,176 @@ function productCatalog(produktKey) {
         btn.innerText = 'buy now!';
         btn.classList.add('product__btn');
         infoBlock.appendChild(btn);
-        mainBlock.addEventListener('click', (e) => {
-            const blockClass = document.querySelectorAll('.product__info');
-            blockClass.forEach(el => el.classList.remove('product__info-active'));
-            infoBlock.classList.add('product__info-active');
-            btn.addEventListener('click', (e) => {
-                popup.classList.add('popup-active');
-                popupContent.classList.add('popup__content-active');
-                popupCloseIcon.addEventListener('click', (e) => {
-                    popup.classList.remove('popup-active');
-                    popupContent.classList.remove('popup__content-active');
-                    wrapperBlock.innerHTML = '';
-                });
+        mainBlock.addEventListener('click', () => {
+            productInfoActive(infoBlock);
+            btn.addEventListener('click', () => {
+                activePopup();
             });
         });
     });
 };
 
+function productInfoActive(el){
+    const blockClass = document.querySelectorAll('.product__info');
+    blockClass.forEach(el => el.classList.remove('product__info-active'));
+    el.classList.add('product__info-active');
+};
+ 
+function activePopup(){
+    popup.classList.add('popup-active');
+    popupContent.classList.add('popup__content-active');
+};
+    
+function closePopup(){
+    popup.classList.remove('popup-active');
+    popupContent.classList.remove('popup__content-active');
+    wrapperBlock.innerHTML = '';
+
+}
+
+popupCloseIcon.addEventListener('click', () => {
+    closePopup();
+});
 
 
+const form = document.querySelector('#get_form');
+const firstName = form.firstname;
+const lastName = form.lastname;
+const phone = form.phone;
+const email = form.email;
+const city = form.city;
+const poshta = form.poshta;
+const payment = form.payment;
+const quantity = form.quantity;
+const textarea = form.textarea;
+const submit = document.querySelector('.form__btn');
 
+const formInputs = [
+    {
+        name: 'firstName',
+        inputEl: firstName,
+        validationsRules: [validateStringLength, validateForValue],
+        errorElValue: firstName.parentElement.querySelector('.form__error'),
+        errorElForm: firstName.parentElement.querySelector('.form__error-length')
+    },
+    {
+        name: 'lastName',
+        inputEl: lastName,
+        validationsRules: [validateStringLength, validateForValue],
+        errorElValue: lastName.parentElement.querySelector('.form__error'),
+        errorElForm: lastName.parentElement.querySelector('.form__error-length')
+    },
+    {
+        name: 'phone',
+        inputEl: phone,
+        validationsRules: [isNumber],
+        errorElValue: phone.parentElement.querySelector('.form__error'),
+        errorElForm: phone.parentElement.querySelector('.form__error-number')
+    },
+    {
+        name: 'email',
+        inputEl: email,
+        validationsRules: [isEmail],
+        errorElValue: email.parentElement.querySelector('.form__error'),
+        errorElForm: email.parentElement.querySelector('.form__error-email')
+    },
+    {
+        name: 'city',
+        inputEl: city,
+        validationsRules: []
+    },
+    {
+        name: 'poshta',
+        inputEl: poshta,
+        validationsRules: []
+    },
+    {
+        name: 'payment',
+        inputEl: payment,
+        validationsRules: []
+    },
+    {
+        name: 'quantity',
+        inputEl: quantity,
+        validationsRules: []
+    },
+    {
+        name: 'textarea',
+        inputEl: textarea,
+        validationsRules: []
+    }
+];
 
+submit.addEventListener('click', (e) => {
+    e.preventDefault();
+    const validatedArr = formInputs.map((el) => {
+       const allIsValid = el.validationsRules.map((func) => {
+            return func(el.inputEl.value, el.errorElValue, el.errorElForm);
+        });
+        return allIsValid.every(el => el === true);
+    });
+    if(validatedArr.every(el => el === true)){
+        const data = {};
+        formInputs.forEach((input) => {
+            data[input.name] = input.inputEl.value;
+        });
+        sendOnServer(data);
+        closePopup();
+    } else {
+        console.log('sth wrong');
+    }
+});
 
+function sendOnServer(data){
+    console.log(data);
+}
 
+function validateStringLength(value, errorElValue, errorElForm){
+    const isLength = value.length >= 3;
+    if(isLength === true) {
+        errorElForm.classList.add('hide');
+        errorElValue.classList.add('hide');
+    } else {
+        errorElForm.classList.remove('hide');
+        errorElValue.classList.remove('hide');
+        errorElForm.innerHTML = 'not long enought';
+    }
+    return isLength;
+}
 
+function validateForValue(value, errorElValue) {
+    const isValue = !!value.trim();
+    if(isValue === true) {
+        errorElValue.classList.add('hide');
+    } else {
+        errorElValue.classList.remove('hide');
+        errorElValue.innerHTML = 'the fild is empty';
+    }
+    return isValue;
+}
 
+function isNumber(value, errorElValue, errorElForm) {
+    const isNum = value ? !isNaN(value) : false;
+    if(isNum === true) {
+        errorElForm.classList.add('hide');
+        errorElValue.classList.add('hide');
+    } else {
+        errorElForm.classList.remove('hide');
+        errorElValue.classList.remove('hide');
+        errorElForm.innerHTML = 'it is not a number';
+    }
+    return isNum;
+}
 
-
-
-
-// img.addEventListener('click', (e) => {
-//     // popup.classList.add('popup-active');
-//     console.log('hello');
-// });
-
-
-
-
-// function productCatalog(produktKey) {
-//     const wrapperBlock = document.createElement('div');
-//     wrapperBlock.classList.add('product__wrapp');
-//     catalog.appendChild(wrapperBlock);
-//     mainList.addEventListener('click', (e) => {
-//         if(!wrapperBlock) return;
-//         wrapperBlock.innerHTML = '';
-//         wrapperBlock.classList.add('product__wrapp-active');
-//     });
-
-
-
-// function productCatalog(produktKey) {
-//     const wrapperBlock = document.createElement('div');
-//     wrapperBlock.classList.add('product__wrapp');
-//     catalog.appendChild(wrapperBlock);
-//     mainList.addEventListener('click', (e) => {
-//         if(!wrapperBlock) return;
-//         wrapperBlock.innerHTML = '';
-//         wrapperBlock.classList.add('product__wrapp-active');
-//     });
-
-//  // if(!targetAction) return;
-//  if(currentItem) {
-//     productWrapp.innerHTML = '';
-// }
-// currentItem = targetAction;
-
-
-// catalog.addEventListener('click', (e) => {
-//     const target = e.target;
-//     if(!target.classList.contains('product__wrapp')) return;
-//     if(currentItem) {
-//         currentItem.style.display = 'flex';
-//     }
-//     currentItem = target;
-//     currentItem.style.display = 'none';
-// });
-
- // mainList.addEventListener('click', (e) => {
-    //     const wrapperSelect = document.querySelectorAll('.product__wrapp');
-    //     wrapperSelect.forEach(el => {
-    //         el.classList.remove('product__wrapp-active');
-    //     });
-    //     wrapperBlock.classList.add('product__wrapp-active');
-    // });
+function isEmail(value, errorElValue, errorElForm) {
+	const isEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
+    if(isEmail === true) {
+        errorElForm.classList.add('hide');
+        errorElValue.classList.add('hide');
+    } else {
+        errorElValue.classList.remove('hide');
+        errorElForm.classList.remove('hide');
+        errorElForm.innerHTML = 'it is not an email';
+    }
+    return isEmail;
+}
