@@ -2,6 +2,7 @@ const form = document.querySelector('.form');
 const box = document.querySelector('.post__box');
 const commentWrapp = document.querySelector('.comment__wrapp');
 const btnComment = document.querySelector('.btn__comment');
+const input = document.querySelector('.id__input');
 const requesrURL = 'https://jsonplaceholder.typicode.com/';
 
 
@@ -19,14 +20,13 @@ const createPostContainer = (title, body) => {
 const createPost = () => {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-        const input = document.querySelector('.id__input').value;
         box.innerHTML = '';
         commentWrapp.innerHTML = '';
-        if(!input) return;
-        fetch(`${requesrURL}posts/${input}`)
+        if(!input.value) return;
+        fetch(`${requesrURL}posts/${input.value}`)
         .then(res => {
         if(res.status <= 400){
-        return res.json();
+            return res.json();
         }
         return res.json().then(err => {
             const e = new Error('Something wrong');
@@ -56,7 +56,7 @@ const createCommentsContainer = (name, body) => {
     const commentBox = document.createElement('div');
     commentBox.innerHTML = `
         <h2> Comment: ${name}</h2>
-        <p> Comment body:  ${body}</p>
+        <p> Comment body: ${body}</p>
     `;
 
     return commentBox;
@@ -64,9 +64,8 @@ const createCommentsContainer = (name, body) => {
 
 const createComments = () => {
     btnComment.addEventListener('click', () => {
-        const input = document.querySelector('.id__input').value;
         commentWrapp.innerHTML = '';
-        fetch(`${requesrURL}posts/${input}/comments`)
+        fetch(`${requesrURL}posts/${input.value}/comments`)
         .then(res => {
         return res.json();
         })
