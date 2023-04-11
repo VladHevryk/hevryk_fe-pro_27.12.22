@@ -1,0 +1,28 @@
+.nav_bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    };
+    &__item {
+        margin: 10px;
+    };   
+    &__btn {
+        background: transparent;
+        border: 1px solid teal;
+        padding: 5px;
+        border-radius: 2px;
+        cursor: pointer;
+        &:hover {
+            background: teal;
+            transition: all ease-in-out 0.3s;
+        }
+    }   
+};
+    
