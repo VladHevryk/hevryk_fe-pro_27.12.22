@@ -1,18 +1,33 @@
-import React, { useState } from "react";
-import classes from './CentralContainer.module.scss'
+import React, {useState} from "react";
+import classes from "./CentralContainer.module.scss";
 import MainContainer from "../MainContainer/MainContainer";
+import Button from "../Button/Button";
 
 const CentralContainer = (props) => {
+  const button = [
+    { id: 0, title: "Home"},
+    { id: 1, title: "About Us"},
+    { id: 2, title: "Contact"},
+    { id: 3, title: "Catalog"},
+  ];
+
+  const [name, setNames] = useState('Main Block');
+
+  const handelName = (id) => {
+    const elemenIndex = button.findIndex((c) => c.id === id);
+    const newName = button[elemenIndex].title;
+    setNames(newName)
+  };
+
   return (
     <div className={classes.nav_bar}>
-      <ul className={classes.nav_bar__list}>
+      <div className={classes.nav_bar__list}>
         <h1>{props.title}</h1>
-        <li className={classes.nav_bar__item}><button className={classes.nav_bar__btn}>Home</button></li>
-        <li className={classes.nav_bar__item}><button className={classes.nav_bar__btn}>About Us</button> </li>
-        <li className={classes.nav_bar__item}><button className={classes.nav_bar__btn}>Contact</button></li>
-        <li className={classes.nav_bar__item}><button className={classes.nav_bar__btn}>Catalog</button></li>
-      </ul>
-    <MainContainer title="Main Container"/>
+        {button.map((el) => (
+        <Button onName={handelName} key={el.id} {...el}/>
+        ))}
+      </div>
+      <MainContainer name={name} />
     </div>
   );
 };
