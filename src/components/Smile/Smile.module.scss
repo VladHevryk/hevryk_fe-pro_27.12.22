@@ -1,0 +1,19 @@
+.smile_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+.smile_btn {
+    border: none;
+    background: inherit;
+    font-size: 40px;
+    cursor: pointer;
+}
+.smile_title {
+    margin: 0;
+    text-transform: uppercase;
+}
+.smile_count{
+    margin: 0;
+}

@@ -1,0 +1,26 @@
+.winner_block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.winner_btn {
+    background: inherit;
+    border: 1px solid teal; 
+    padding: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    &:hover {
+        background: teal;
+        border: 1px solid teal; 
+        color: white;
+    }
+}
+.winner_smile {
+    display: flex;
+    font-size: 40px;
+    text-transform: uppercase;
+    margin: 0;
+}
