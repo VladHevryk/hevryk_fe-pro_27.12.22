@@ -1,0 +1,29 @@
+.title {
+    color: rgb(241, 227, 37);
+}
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    color: #8ab4f8;
+    font-size: 20px;
+}
+.fillings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    &_btn {
+        border: none;
+        background: inherit;
+        cursor: pointer;
+    }
+    &_img {
+        height: 140px;
+        width: 200px;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+}

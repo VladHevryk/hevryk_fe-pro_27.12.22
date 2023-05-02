@@ -1,0 +1,15 @@
+.title {
+    color: rgb(241, 227, 37);
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+    left: 0;
+    background: rgba($color: #574b4b, $alpha: 1.0);
+    color: #8ab4f8;
+    width: 150px;
+    font-size: 20px;
+}

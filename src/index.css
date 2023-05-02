@@ -1,0 +1,10 @@
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #202124;
+    font-family: 'Alkatra', cursive;
+    text-transform: uppercase;
+    text-align: center;
+}
