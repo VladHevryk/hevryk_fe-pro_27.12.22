@@ -1,0 +1,8 @@
+.photo {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    &_img{
+        width: 200px;
+    }
+}
